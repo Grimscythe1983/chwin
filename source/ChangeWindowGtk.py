@@ -6,7 +6,7 @@
 # Created:     17/12/2016
 # Modified:    17/12/2016
 # Copyright:   pjdamian.chrzanowski@gmail.com
-# License:     MIT
+# License:     GPLv3
 # Version:     0.2
 # Revision:    N/A
 # -----------------------------------------------------------------------------
@@ -53,6 +53,7 @@ class MainWindow(object):
 
         # main window and grid
         self.window = Gtk.Window()
+        self.window.connect("destroy", lambda q: Gtk.main_quit())
         self.window.modify_bg(Gtk.StateFlags.NORMAL, Gdk.color_parse("black"))
         self.window.set_title("chwin v" + VERSION)
         # self.window.set_icon_from_file('icon_small.png')
