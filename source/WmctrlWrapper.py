@@ -7,7 +7,7 @@
 # Created:     17/12/2016
 # Modified:    17/12/2016
 # Copyright:   pjdamian.chrzanowski@gmail.com
-# License:     MIT
+# License:     GPLv3
 # Version:     0.2
 # Revision:    N/A
 # -----------------------------------------------------------------------------
