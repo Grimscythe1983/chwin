@@ -1,3 +1,5 @@
+![screenshot](https://cloud.githubusercontent.com/assets/16053284/21318741/67e0896e-c602-11e6-8ea8-cbc1fbb7928b.png)
+
 # chwin v 0.3
 Keyboard based window switcher for Linux
 
