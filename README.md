@@ -33,6 +33,11 @@ chwin-run-in-background is slightly more demanding on the resources (only a few 
 Copy all the files from either the source/chwin-standard or source/chwin-run-in-background
 to your ~/bin (/home/your-username/bin) directory and just in case make sure that chwim is executable by running: `chmod +x chwin` from your terminal. Now you can bind `chwin` to any shortcut, or run it from wherever you want.
 
+#### Configuration:
+
+After the first run a configuration file will be created in ~/.config/chwin/settings.cfg
+
+In the configuration file the user can change the window's colors and change the list of windows that should be ignored by chwin.
 
 #### TODO:
 
