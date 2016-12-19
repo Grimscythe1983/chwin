@@ -16,10 +16,12 @@ For traditional usage, use up and down arrows keys and press enter to switch to 
 ### Dependencies
 This software is for linux ONLY and requires you to install wmctrl (it is tiny), python3 and Gtk3 should be already installed on most of linux distributions.
 To install the dependencies type (Ubuntu, Debian etc.):
-sudo apt-get install wmctrl python3 gtk3
+
+`sudo apt-get install wmctrl python3 gtk3`
 
 For arch linux and similar type:
-sudo pacman -S wmctrl python3 gtk3
+
+`sudo pacman -S wmctrl python3 gtk3`
 
 Any other distro should also have wmctrl python3 gtk3 in their availability, just user your package manager.
 
