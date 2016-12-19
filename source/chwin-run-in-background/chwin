@@ -1,3 +1,4 @@
 #!/bin/bash
 
+cd ~/bin
 python ~/bin/chwin_runner.py
