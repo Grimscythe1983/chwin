@@ -9,7 +9,7 @@ Check out my website at: http://damianch.eu.pn/
 
 ### Overview:
 chwin is an application for linux only. It shows a small window with a list of currently open windows.
-A selection can be made by narrowing down the search with a keyboard and pressing Enter.
+A selection can be made by narrowing down the search with a keyboard and pressing Enter, note that using a capital letter as the first input triggers a case sensitive search.
 Users can also use numbers from 0 to 9 to quick jump.
 For traditional usage, use up and down arrows keys and press enter to switch to the selected window.
 
