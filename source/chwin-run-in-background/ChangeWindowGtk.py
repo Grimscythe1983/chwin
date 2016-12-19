@@ -106,6 +106,7 @@ class MainWindow(object):
         self.current_window_choices = list(self.window_choices)
         self.selector_max = len(self.window_choices) - 1
         self.draw_selections()
+        self.entry_box.set_text("")
 
     def run_wmctrl(self):
         user_input = self.entry_box.get_text()
