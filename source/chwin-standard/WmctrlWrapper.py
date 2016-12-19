@@ -31,10 +31,8 @@
 
 import subprocess
 
-BANNED_NAMES = ["conky", "xfce4", "Desktop", "tilda", "chwin"]
 
-
-def grab_window_names():
+def grab_window_names(BANNED_NAMES):
 
     try:
         hostname = str(subprocess.check_output("echo $HOSTNAME", shell=True), "utf-8")

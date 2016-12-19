@@ -7,7 +7,7 @@
 # Modified:    17/12/2016
 # Copyright:   pjdamian.chrzanowski@gmail.com
 # License:     GPLv3
-# Version:     0.2
+# Version:     0.3
 # Revision:    N/A
 # -----------------------------------------------------------------------------
 # chwin, GUI application that assists in window selection using just a keyboard
@@ -33,30 +33,38 @@
 try:
     from gi.repository import Gtk, Gdk
     import subprocess
+    import SettingManager
     import WmctrlWrapper
 except Exception as e:
     print("\n\nchwin is missing a module!!!")
     print(e)
     quit()
 
-VERSION = "0.2"
+VERSION = "0.3"
 
 
 class MainWindow(object):
     """Create the main window class"""
-    def __init__(self):
+    def __init__(self, entry_fg, entry_bg, results_fg, results_bg, arrow, numbers, bans):
         # class variables
-        self.window_choices = WmctrlWrapper.grab_window_names()
+        self.window_choices = WmctrlWrapper.grab_window_names(bans)
         self.current_window_choices = list(self.window_choices)
         self.selector_pos = 0
         self.selector_max = len(self.window_choices) - 1
+        self.entry_fg = entry_fg
+        self.entry_bg = entry_bg
+        self.results_fg = results_fg
+        self.results_bg = results_bg
+        self.arrow = arrow
+        self.numbers = numbers
+        self.bans = bans
 
         # main window and grid
         self.window = Gtk.Window()
         self.window.connect("destroy", lambda q: Gtk.main_quit())
-        self.window.modify_bg(Gtk.StateFlags.NORMAL, Gdk.color_parse("black"))
+        self.window.modify_bg(Gtk.StateFlags.NORMAL, Gdk.color_parse(self.results_bg))
         self.window.set_title("chwin v" + VERSION)
-        # self.window.set_icon_from_file('icon_small.png')
+        self.window.set_icon_from_file('icon.png')
         self.grid = Gtk.Grid()
         self.window.add(self.grid)
 
@@ -66,8 +74,8 @@ class MainWindow(object):
         self.entry_box.connect("activate", self.entry_activated)
         self.entry_box.connect("key-press-event", self.key_activated)
         self.entry_box.connect("changed", self.entry_changed)
-        self.entry_box.modify_bg(Gtk.StateFlags.NORMAL, Gdk.color_parse("black"))
-        self.entry_box.modify_fg(Gtk.StateFlags.NORMAL, Gdk.color_parse("white"))
+        self.entry_box.modify_bg(Gtk.StateFlags.NORMAL, Gdk.color_parse(self.entry_bg))
+        self.entry_box.modify_fg(Gtk.StateFlags.NORMAL, Gdk.color_parse(self.entry_fg))
 
         # main view as a label
         self.search_view = Gtk.Label()
@@ -76,8 +84,8 @@ class MainWindow(object):
         self.search_view.set_margin_right(10)
         self.search_view.set_margin_top(5)
         self.search_view.set_justify(Gtk.Justification.LEFT)
-        self.search_view.modify_bg(Gtk.StateFlags.NORMAL, Gdk.color_parse("black"))
-        self.search_view.modify_fg(Gtk.StateFlags.NORMAL, Gdk.color_parse("white"))
+        self.search_view.modify_bg(Gtk.StateFlags.NORMAL, Gdk.color_parse(self.results_bg))
+        self.search_view.modify_fg(Gtk.StateFlags.NORMAL, Gdk.color_parse(self.results_fg))
 
         # insert content to the view
         self.draw_selections()
@@ -149,13 +157,21 @@ class MainWindow(object):
 
         for idx, each in enumerate(self.current_window_choices):
             if idx == self.selector_pos:
-                label_txt += "<span color='green'>" + str(idx) + "</span><span color='red'> > </span><b>" + each + "</b>\n"
+                label_txt += "<span color='" + self.numbers + "'>" + str(idx) + "</span><span color='" + self.arrow + "'> > </span><b>" + each + "</b>\n"
             else:
-                label_txt += "<span color='green'>" + str(idx) + "</span>   " + each + "\n"
+                label_txt += "<span color='" + self.numbers + "'>" + str(idx) + "</span>   " + each + "\n"
 
         self.search_view.set_markup(label_txt)
 
 
 if __name__ == '__main__':
-    window = MainWindow()
+    settings = SettingManager.check_config(VERSION)
+    window = MainWindow(settings["entry_FG"],
+                        settings["entry_BG"],
+                        settings["results_FG"],
+                        settings["results_BG"],
+                        settings["arrow"],
+                        settings["numbers"],
+                        settings["bans"])
+
     Gtk.main()
