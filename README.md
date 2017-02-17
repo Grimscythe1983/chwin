@@ -19,19 +19,19 @@ To install the dependencies type (Ubuntu, Debian etc.):
 
 `sudo apt-get install wmctrl python3 gtk3`
 
-For arch linux and similar type:
+For arch linux and similar:
 
 `sudo pacman -S wmctrl python3 gtk3`
 
-Any other distro should also have wmctrl python3 gtk3 in their availability, just user your package manager.
+Any other distro should also have wmctrl python3 gtk3 in their repositories, just use your default package manager.
 
 #### Installation:
 
 chwin-standard is a low resource version (recommended).
-chwin-run-in-background is slightly more demanding on the resources (only a few megs), but it is also much faster.
+chwin-run-in-background is slightly more demanding on the resources (only a few megs), but it is also much faster as it runs in the background.
 
 Copy all the files from either the source/chwin-standard or source/chwin-run-in-background
-to your ~/bin (/home/your-username/bin) directory and just in case make sure that chwim is executable by running: `chmod +x chwin` from your terminal. Now you can bind `chwin` to any shortcut, or run it from wherever you want.
+to your ~/bin (/home/your-username/bin/ or /usr/bin/) directory. Just in case make sure that chwim is executable by running: `chmod +x chwin` from your terminal. Now you can bind `chwin` to any shortcut, or run it from wherever you want.
 
 #### Configuration:
 
@@ -52,7 +52,7 @@ create packages for .deb and PKGBUILD
     * fist release
 
 
-#### JDFlibrary uses the following libraries/software:
+#### chwin uses the following libraries/software:
 
 * wmctrl
 * GTK+ 3
